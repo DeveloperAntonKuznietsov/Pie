@@ -165,7 +165,6 @@ namespace Pie
             radius = Convert.ToDouble(txtParam1.Text);
             arcLength = Convert.ToDouble(txtParam2.Text);
             square = (radius * arcLength) / 2;
-            // result = Math.PI * Math.Pow(radius, 2) * (angle / MAXGRADUS);
             lblSquare.Text = "Flächeninhalt Kuchenstücks = " + square.ToString();
             angle = arcLength / radius;
             lblParamTwo.Text = "Winkel Kuchenstücks = " + angle.ToString();
@@ -177,7 +176,6 @@ namespace Pie
         {
             lblSquare.Visible = true;
             lblParamTwo.Visible = true;
-            //lblParamThree.Visible = true;
             radius = Convert.ToDouble(txtParam2.Text);
             angle = Convert.ToDouble(txtParam1.Text);
             square = Math.PI * Math.Pow(radius, 2) * (angle / MAXGRADUS);
@@ -186,8 +184,6 @@ namespace Pie
             lblParamTwo.Text = "Kuchenstücks Bogenlänge = " + arcLength.ToString();
 
             DrawChoceOfPie((float)angle);
-            //chord = (2*radius)*Math.Sin(angle / 2);
-            //lblParamThree.Text = "Kuchenstücks Sekantenlänge = "+chord.ToString(); 
         }
 
         //this method is responsible for rendering a piece of cake( „Kuchenstück“ graphisch)
