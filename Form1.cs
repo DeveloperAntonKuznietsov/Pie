@@ -115,20 +115,10 @@ namespace Pie
                     }
                     if (cboxKnowing.SelectedItem == cboxKnowing.Items[3])
                     {
-                        lblSquare.Visible = true;
-                        lblParamTwo.Visible = true;
-                        square = Convert.ToDouble(txtParam1.Text);
-                        arcLength = Convert.ToDouble(txtParam2.Text);
-                        radius = square * 2 / arcLength;
-                        lblParamTwo.Text = "Kuchenstücks Schenkellänge = " + radius.ToString();
-                        angle = arcLength / radius;
-                        lblSquare.Text = "Winkel Kuchenstücks = " + angle.ToString();
-                        lblParamThree.Text = "Kuchenstücks Sekantenlänge = " + square.ToString();
-
-                        DrawChoceOfPie((float)angle);
+                        ArcLengthAndSquare();
 
                     }
-                    }
+                }
                 else
                 {
                    MessageBox.Show("Felder müssen Daten enthalten.\nDer Wert in den Feldern darf nicht 0 sein", "Error", MessageBoxButtons.OK);
@@ -137,6 +127,21 @@ namespace Pie
             }
             else MessageBox.Show("Bitte wählen Sie Bekannte Optionen.", "Error", MessageBoxButtons.OK);
         }
+        //this method processes information based on Square and ARC Length
+        private void ArcLengthAndSquare()
+        {
+            lblSquare.Visible = true;
+            lblParamTwo.Visible = true;
+            square = Convert.ToDouble(txtParam1.Text);
+            arcLength = Convert.ToDouble(txtParam2.Text);
+            radius = square * 2 / arcLength;
+            lblParamTwo.Text = "Kuchenstücks Schenkellänge = " + radius.ToString();
+            angle = arcLength / radius;
+            lblSquare.Text = "Winkel Kuchenstücks = " + angle.ToString();
+
+            DrawChoceOfPie((float)angle);
+        }
+
         //this method processes information based on ANGLE and ARC
         private void AngleAndArcLength()
         {

@@ -43,7 +43,6 @@
             this.picBoxArcLengthAndRadius = new System.Windows.Forms.PictureBox();
             this.lblParamTwo = new System.Windows.Forms.Label();
             this.picBoxRadiusAngle = new System.Windows.Forms.PictureBox();
-            this.lblParamThree = new System.Windows.Forms.Label();
             this.picBoxPie = new System.Windows.Forms.PictureBox();
             this.picBoxArcLengthAndSquare = new System.Windows.Forms.PictureBox();
             this.lblIhreKuchenstücks = new System.Windows.Forms.Label();
@@ -69,9 +68,9 @@
             this.lblParam1.AutoSize = true;
             this.lblParam1.Location = new System.Drawing.Point(180, 75);
             this.lblParam1.Name = "lblParam1";
-            this.lblParam1.Size = new System.Drawing.Size(55, 65);
+            this.lblParam1.Size = new System.Drawing.Size(86, 65);
             this.lblParam1.TabIndex = 1;
-            this.lblParam1.Text = "r - radius\r\na - angle\r\nL - chord\r\np - arc\r\nS - square\r\n";
+            this.lblParam1.Text = "r - Radius\r\na - Winkel\r\nL - Sekante\r\np - Bogen\r\nS - Flächeninhalt\r\n";
             // 
             // lblParam2
             // 
@@ -125,9 +124,9 @@
             // 
             this.cboxKnowing.FormattingEnabled = true;
             this.cboxKnowing.Items.AddRange(new object[] {
-            "Radius and angel",
-            "Arc length and radius",
-            "Angle and arc length",
+            "Radius und Winkel",
+            "Bogenlänge und Radius",
+            "Winkel und Bogenlänge",
             "Bogenlänge und Flächeninhalt"});
             this.cboxKnowing.Location = new System.Drawing.Point(350, 7);
             this.cboxKnowing.Name = "cboxKnowing";
@@ -193,16 +192,6 @@
             this.picBoxRadiusAngle.TabStop = false;
             this.picBoxRadiusAngle.Visible = false;
             // 
-            // lblParamThree
-            // 
-            this.lblParamThree.AutoSize = true;
-            this.lblParamThree.Location = new System.Drawing.Point(183, 191);
-            this.lblParamThree.Name = "lblParamThree";
-            this.lblParamThree.Size = new System.Drawing.Size(35, 13);
-            this.lblParamThree.TabIndex = 16;
-            this.lblParamThree.Text = "label3";
-            this.lblParamThree.Visible = false;
-            // 
             // picBoxPie
             // 
             this.picBoxPie.Location = new System.Drawing.Point(128, 220);
@@ -242,7 +231,6 @@
             this.Controls.Add(this.lblIhreKuchenstücks);
             this.Controls.Add(this.picBoxArcLengthAndSquare);
             this.Controls.Add(this.picBoxPie);
-            this.Controls.Add(this.lblParamThree);
             this.Controls.Add(this.picBoxRadiusAngle);
             this.Controls.Add(this.lblParamTwo);
             this.Controls.Add(this.picBoxArcLengthAndRadius);
@@ -289,7 +277,6 @@
         private System.Windows.Forms.PictureBox picBoxArcLengthAndRadius;
         private System.Windows.Forms.Label lblParamTwo;
         private System.Windows.Forms.PictureBox picBoxRadiusAngle;
-        private System.Windows.Forms.Label lblParamThree;
         private System.Windows.Forms.PictureBox picBoxPie;
         private System.Windows.Forms.PictureBox picBoxArcLengthAndSquare;
         private System.Windows.Forms.Label lblIhreKuchenstücks;
