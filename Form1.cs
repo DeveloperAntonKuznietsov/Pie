@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -88,7 +89,8 @@ namespace Pie
 
                 picBoxArcLengthAndRadius.Visible = false;
                 picBoxRadiusAngle.Visible = false;
-                picBoxAngleAndArcLength.Visible = true;
+                picBoxAngleAndArcLength.Visible = false;
+                picBoxArcLengthAndSquare.Visible = true;
                 picBoxStart.Visible = false;
             }
         }
@@ -97,37 +99,40 @@ namespace Pie
         {
             if (cboxKnowing.SelectedItem != null)
             {
-                if (cboxKnowing.SelectedItem == cboxKnowing.Items[0]&& !"".Equals(txtParam1.Text)&& !"".Equals(txtParam2.Text))
+                if (!"".Equals(txtParam1.Text) && !"".Equals(txtParam2.Text) && !"0".Equals(txtParam1.Text) && !"0".Equals(txtParam2.Text))
                 {
-                    AngleAndRadius();
-                }
+                    if (cboxKnowing.SelectedItem == cboxKnowing.Items[0])
+                    {
+                        AngleAndRadius();
+                    }
+                    if (cboxKnowing.SelectedItem == cboxKnowing.Items[1])
+                    { 
+                        ArcLengthAndRadius();
+                    }
+                    if (cboxKnowing.SelectedItem == cboxKnowing.Items[2])
+                    {
+                        AngleAndArcLength();
+                    }
+                    if (cboxKnowing.SelectedItem == cboxKnowing.Items[3])
+                    {
+                        lblSquare.Visible = true;
+                        lblParamTwo.Visible = true;
+                        square = Convert.ToDouble(txtParam1.Text);
+                        arcLength = Convert.ToDouble(txtParam2.Text);
+                        radius = square * 2 / arcLength;
+                        lblParamTwo.Text = "Kuchenstücks Schenkellänge = " + radius.ToString();
+                        angle = arcLength / radius;
+                        lblSquare.Text = "Winkel Kuchenstücks = " + angle.ToString();
+                        lblParamThree.Text = "Kuchenstücks Sekantenlänge = " + square.ToString();
+
+                        DrawChoceOfPie((float)angle);
+
+                    }
+                    }
                 else
                 {
-                    MessageBox.Show("Felder müssen Daten enthalten.", "Error", MessageBoxButtons.OK);
+                   MessageBox.Show("Felder müssen Daten enthalten.\nDer Wert in den Feldern darf nicht 0 sein", "Error", MessageBoxButtons.OK);
                 }
-                if (cboxKnowing.SelectedItem == cboxKnowing.Items[1])
-                {
-                    ArcLengthAndRadius();
-                }
-                if (cboxKnowing.SelectedItem == cboxKnowing.Items[2])
-                {
-                    AngleAndArcLength();
-                }
-                //if (cboxKnowing.SelectedItem == cboxKnowing.Items[3])
-                //{
-                //    lblSquare.Visible = true;
-                //    lblParamTwo.Visible = true;
-                //    square = Convert.ToDouble(txtParam1.Text);
-                //    arcLength = Convert.ToDouble(txtParam2.Text);
-                //    radius = square * 2 / arcLength;
-                //    lblParamTwo.Text = "Kuchenstücks Schenkellänge = " + radius.ToString();
-                //    angle = arcLength / radius;
-                //    lblSquare.Text = "Winkel Kuchenstücks = " + angle.ToString();
-                //    lblParamThree.Text = "Kuchenstücks Sekantenlänge = " + square.ToString();
-
-                //    DrawChoceOfPie((float)angle);
-
-                //}
 
             }
             else MessageBox.Show("Bitte wählen Sie Bekannte Optionen.", "Error", MessageBoxButtons.OK);
@@ -188,7 +193,7 @@ namespace Pie
             Graphics gr = picBoxPie.CreateGraphics();
             Pen outline_pen = Pens.Red;
             Brush fill_brush = Brushes.LightGreen;
-
+            lblIhreKuchenstücks.Visible = true;
             using (Pen ellipse_pen = new Pen(Color.Blue))
             {
                 ellipse_pen.DashPattern = new float[] { 5, 5 };
@@ -198,6 +203,24 @@ namespace Pie
                 gr.FillPie(fill_brush, rect, 300, angle);
                 gr.DrawPie(outline_pen, rect, 300, angle);
 
+            }
+        }
+        //regex to field txtParam1
+        private void TxtParam1_TextChanged(object sender, EventArgs e)
+        {
+            if (Regex.IsMatch(txtParam1.Text, "[^0-9-,]"))
+            {
+                txtParam1.Text = txtParam1.Text.Remove(txtParam1.Text.Length - 1);
+                txtParam1.SelectionStart = txtParam1.TextLength;
+            }
+        }
+        //regex to field txtParam2
+        private void TxtParam2_TextChanged(object sender, EventArgs e)
+        {
+            if (Regex.IsMatch(txtParam2.Text, "[^0-9-,]"))
+            {
+                txtParam2.Text = txtParam2.Text.Remove(txtParam2.Text.Length - 1);
+                txtParam2.SelectionStart = txtParam2.TextLength;
             }
         }
     }
