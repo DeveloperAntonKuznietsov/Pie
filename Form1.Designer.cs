@@ -46,6 +46,7 @@
             this.picBoxPie = new System.Windows.Forms.PictureBox();
             this.picBoxArcLengthAndSquare = new System.Windows.Forms.PictureBox();
             this.lblIhreKuchenstücks = new System.Windows.Forms.Label();
+            this.lblParamThree = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxAngleAndArcLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxArcLengthAndRadius)).BeginInit();
@@ -222,12 +223,23 @@
             this.lblIhreKuchenstücks.Text = "Ihre Kuchenstücks";
             this.lblIhreKuchenstücks.Visible = false;
             // 
+            // lblParamThree
+            // 
+            this.lblParamThree.AutoSize = true;
+            this.lblParamThree.Location = new System.Drawing.Point(183, 191);
+            this.lblParamThree.Name = "lblParamThree";
+            this.lblParamThree.Size = new System.Drawing.Size(35, 13);
+            this.lblParamThree.TabIndex = 20;
+            this.lblParamThree.Text = "label2";
+            this.lblParamThree.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(514, 432);
+            this.Controls.Add(this.lblParamThree);
             this.Controls.Add(this.lblIhreKuchenstücks);
             this.Controls.Add(this.picBoxArcLengthAndSquare);
             this.Controls.Add(this.picBoxPie);
@@ -280,6 +292,7 @@
         private System.Windows.Forms.PictureBox picBoxPie;
         private System.Windows.Forms.PictureBox picBoxArcLengthAndSquare;
         private System.Windows.Forms.Label lblIhreKuchenstücks;
+        private System.Windows.Forms.Label lblParamThree;
     }
 }
 

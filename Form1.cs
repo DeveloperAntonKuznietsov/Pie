@@ -176,12 +176,15 @@ namespace Pie
         {
             lblSquare.Visible = true;
             lblParamTwo.Visible = true;
+            lblParamThree.Visible = true;
             radius = Convert.ToDouble(txtParam2.Text);
             angle = Convert.ToDouble(txtParam1.Text);
             square = Math.PI * Math.Pow(radius, 2) * (angle / MAXGRADUS);
             lblSquare.Text = "Flächeninhalt Kuchenstücks = " + square.ToString();
-            arcLength = radius * angle;
+            arcLength = (radius * angle*Math.PI)/180;//changed Formula
             lblParamTwo.Text = "Kuchenstücks Bogenlänge = " + arcLength.ToString();
+            chord = 2 * radius * Math.Sin(angle / 2);//added new Formula for chord
+            lblParamThree.Text = "Sekantenlänge = " +chord.ToString();
 
             DrawChoceOfPie((float)angle);
         }
