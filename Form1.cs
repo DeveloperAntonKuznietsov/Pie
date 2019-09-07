@@ -32,9 +32,12 @@ namespace Pie
             {
                 lblSquare.Visible = false;
                 lblParamTwo.Visible = false;
+                lblParamThree.Visible = false;
                 picBoxRadiusAngle.Visible = true;
                 picBoxAngleAndArcLength.Visible = false;
                 picBoxArcLengthAndRadius.Visible = false;
+                picBoxArcLengthAndSquare.Visible = false;
+                picBoxSecantAndRadius.Visible = false;
                 picBoxStart.Visible = false;
 
                 lblParam1.Text = "Winkel Kuchenstücks α";
@@ -48,6 +51,7 @@ namespace Pie
             {
                 lblSquare.Visible = false;
                 lblParamTwo.Visible = false;
+                lblParamThree.Visible = false;
                 lblParam1.Text = "Kuchenstücks Bogenlänge p";
                 lblParam2.Text = "Schenkellänge r";
                 lblProperties.Visible = false;
@@ -57,13 +61,16 @@ namespace Pie
 
                 picBoxArcLengthAndRadius.Visible = true;
                 picBoxRadiusAngle.Visible = false;
+                picBoxArcLengthAndSquare.Visible = false;
                 picBoxAngleAndArcLength.Visible = false;
+                picBoxSecantAndRadius.Visible = false;
                 picBoxStart.Visible = false;
             }
             if (cboxKnowing.SelectedItem == cboxKnowing.Items[2])
             {
                 lblSquare.Visible = false;
                 lblParamTwo.Visible = false;
+                lblParamThree.Visible = false;
                 lblParam1.Text = "Winkel Kuchenstücks α";
                 lblParam2.Text = "Kuchenstücks Bogenlänge p";
                 lblProperties.Visible = false;
@@ -73,13 +80,16 @@ namespace Pie
 
                 picBoxArcLengthAndRadius.Visible = false;
                 picBoxRadiusAngle.Visible = false;
+                picBoxArcLengthAndSquare.Visible = false;
                 picBoxAngleAndArcLength.Visible = true;
+                picBoxSecantAndRadius.Visible = false;
                 picBoxStart.Visible = false;
             }
             if (cboxKnowing.SelectedItem == cboxKnowing.Items[3])
             {
                 lblSquare.Visible = false;
                 lblParamTwo.Visible = false;
+                lblParamThree.Visible = false;
                 lblParam1.Text = "Flächeninhalt Kuchenstücks S";
                 lblParam2.Text = "Kuchenstücks Bogenlänge p";
                 lblProperties.Visible = false;
@@ -91,6 +101,26 @@ namespace Pie
                 picBoxRadiusAngle.Visible = false;
                 picBoxAngleAndArcLength.Visible = false;
                 picBoxArcLengthAndSquare.Visible = true;
+                picBoxSecantAndRadius.Visible = false;
+                picBoxStart.Visible = false;
+            }
+            if (cboxKnowing.SelectedItem == cboxKnowing.Items[4])
+            {
+                lblSquare.Visible = false;
+                lblParamTwo.Visible = false;
+                lblParamThree.Visible = false;
+                lblParam1.Text = "Kuchenstücks Sekantenlänge L";
+                lblParam2.Text = "Kuchenstücks Schenkellänge r";
+                lblProperties.Visible = false;
+                lblParam2.Visible = true;
+                txtParam1.Visible = true;
+                txtParam2.Visible = true;
+
+                picBoxArcLengthAndRadius.Visible = false;
+                picBoxRadiusAngle.Visible = false;
+                picBoxAngleAndArcLength.Visible = false;
+                picBoxArcLengthAndSquare.Visible = false;
+                picBoxSecantAndRadius.Visible = true;
                 picBoxStart.Visible = false;
             }
         }
@@ -118,6 +148,11 @@ namespace Pie
                         ArcLengthAndSquare();
 
                     }
+                    if (cboxKnowing.SelectedItem == cboxKnowing.Items[4])
+                    {
+                        SecantAndRadius();
+
+                    }
                 }
                 else
                 {
@@ -127,6 +162,24 @@ namespace Pie
             }
             else MessageBox.Show("Bitte wählen Sie Bekannte Optionen.", "Error", MessageBoxButtons.OK);
         }
+        //this method processes information based on Secant and Radius
+        private void SecantAndRadius()//new method
+        {
+            lblSquare.Visible = true;
+            lblParamTwo.Visible = true;
+            
+            chord = Convert.ToDouble(txtParam1.Text);
+            radius = Convert.ToDouble(txtParam2.Text);
+            double b = Math.Asin(chord / (2 * radius));
+            arcLength = 2*radius*b;
+            lblParamTwo.Text = "Kuchenstücks Bogenlänge = " + arcLength.ToString();
+
+            angle = b*(MAXGRADUS/Math.PI);
+            lblSquare.Text = "Winkel Kuchenstücks = " + angle.ToString();
+
+            DrawChoceOfPie((float)angle);
+        }
+
         //this method processes information based on Square and ARC Length
         private void ArcLengthAndSquare()
         {
@@ -147,12 +200,16 @@ namespace Pie
         {
             lblSquare.Visible = true;
             lblParamTwo.Visible = true;
+            lblParamThree.Visible = true;
             angle = Convert.ToDouble(txtParam1.Text);
             arcLength = Convert.ToDouble(txtParam2.Text);
-            radius = arcLength / angle;
+            double b = angle * (Math.PI / MAXGRADUS);
+            radius = (arcLength / b)/2;
             lblParamTwo.Text = "Kuchenstücks Schenkellänge = " + radius.ToString();
             square = Math.PI * Math.Pow(radius, 2) * (angle / MAXGRADUS);
             lblSquare.Text = "Flächeninhalt Kuchenstücks = " + square.ToString();
+            chord = 2 * radius * Math.Sin(b);
+            lblParamThree.Text = "Sekantenlänge = " + chord.ToString();
 
             DrawChoceOfPie((float)angle);
         }
@@ -162,12 +219,16 @@ namespace Pie
         {
             lblSquare.Visible = true;
             lblParamTwo.Visible = true;
+            lblParamThree.Visible = true;
             radius = Convert.ToDouble(txtParam1.Text);
             arcLength = Convert.ToDouble(txtParam2.Text);
             square = (radius * arcLength) / 2;
             lblSquare.Text = "Flächeninhalt Kuchenstücks = " + square.ToString();
             angle = arcLength / radius;
             lblParamTwo.Text = "Winkel Kuchenstücks = " + angle.ToString();
+            double b = arcLength / (2 * radius);
+            chord = 2 * radius * Math.Sin(b);
+            lblParamThree.Text = "Sekantenlänge = " + chord.ToString();
 
             DrawChoceOfPie((float)angle);
         }
@@ -183,8 +244,10 @@ namespace Pie
             lblSquare.Text = "Flächeninhalt Kuchenstücks = " + square.ToString();
             arcLength = (radius * angle*Math.PI)/180;//changed Formula
             lblParamTwo.Text = "Kuchenstücks Bogenlänge = " + arcLength.ToString();
-            chord = 2 * radius * Math.Sin(angle / 2);//added new Formula for chord
-            lblParamThree.Text = "Sekantenlänge = " +chord.ToString();
+            double b = angle / 2;
+            double c = Math.Sin(b);
+            chord = 2 * radius * c;//added new Formula for chord
+            lblParamThree.Text = "Sekantenlänge = " +chord.ToString();//=====
 
             DrawChoceOfPie((float)angle);
         }
