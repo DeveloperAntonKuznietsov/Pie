@@ -48,6 +48,7 @@
             this.lblIhreKuchenstücks = new System.Windows.Forms.Label();
             this.lblParamThree = new System.Windows.Forms.Label();
             this.picBoxSecantAndRadius = new System.Windows.Forms.PictureBox();
+            this.picBoxSecantAndAngle = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxAngleAndArcLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxArcLengthAndRadius)).BeginInit();
@@ -55,6 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBoxPie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxArcLengthAndSquare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxSecantAndRadius)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxSecantAndAngle)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -131,7 +133,8 @@
             "Bogenlänge und Radius",
             "Winkel und Bogenlänge",
             "Bogenlänge und Flächeninhalt",
-            "Sekante und Radius"});
+            "Sekante und Radius",
+            "Sekante und Winkel"});
             this.cboxKnowing.Location = new System.Drawing.Point(350, 7);
             this.cboxKnowing.Name = "cboxKnowing";
             this.cboxKnowing.Size = new System.Drawing.Size(138, 21);
@@ -246,12 +249,23 @@
             this.picBoxSecantAndRadius.TabStop = false;
             this.picBoxSecantAndRadius.Visible = false;
             // 
+            // picBoxSecantAndAngle
+            // 
+            this.picBoxSecantAndAngle.Image = ((System.Drawing.Image)(resources.GetObject("picBoxSecantAndAngle.Image")));
+            this.picBoxSecantAndAngle.Location = new System.Drawing.Point(-1, 40);
+            this.picBoxSecantAndAngle.Name = "picBoxSecantAndAngle";
+            this.picBoxSecantAndAngle.Size = new System.Drawing.Size(157, 144);
+            this.picBoxSecantAndAngle.TabIndex = 22;
+            this.picBoxSecantAndAngle.TabStop = false;
+            this.picBoxSecantAndAngle.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(514, 432);
+            this.Controls.Add(this.picBoxSecantAndAngle);
             this.Controls.Add(this.picBoxSecantAndRadius);
             this.Controls.Add(this.lblParamThree);
             this.Controls.Add(this.lblIhreKuchenstücks);
@@ -283,6 +297,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBoxPie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxArcLengthAndSquare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxSecantAndRadius)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxSecantAndAngle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,6 +324,7 @@
         private System.Windows.Forms.Label lblIhreKuchenstücks;
         private System.Windows.Forms.Label lblParamThree;
         private System.Windows.Forms.PictureBox picBoxSecantAndRadius;
+        private System.Windows.Forms.PictureBox picBoxSecantAndAngle;
     }
 }
 
