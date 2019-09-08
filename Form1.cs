@@ -23,6 +23,7 @@ namespace Pie
         public Form1()
         {
             InitializeComponent();
+          
         }
 
 
@@ -314,6 +315,7 @@ namespace Pie
             const int margin = 10;
             const int width = 150;
             Graphics gr = picBoxPie.CreateGraphics();
+            gr.Clear(Color.White);
             Pen outline_pen = Pens.Red;
             Brush fill_brush = Brushes.LightGreen;
             lblIhreKuchenstücks.Visible = true;
@@ -325,8 +327,9 @@ namespace Pie
                 gr.DrawEllipse(ellipse_pen, rect);
                 gr.FillPie(fill_brush, rect, 300, angle);
                 gr.DrawPie(outline_pen, rect, 300, angle);
-
+                
             }
+            
         }
         //regex to field txtParam1
         private void TxtParam1_TextChanged(object sender, EventArgs e)

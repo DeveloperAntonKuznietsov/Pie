@@ -285,6 +285,7 @@
             this.Controls.Add(this.lblParam2);
             this.Controls.Add(this.lblParam1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(530, 470);
             this.MinimumSize = new System.Drawing.Size(530, 470);
             this.Name = "Form1";
