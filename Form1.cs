@@ -196,19 +196,19 @@ namespace Pie
         {
             lblSquare.Visible = true;
             lblParamTwo.Visible = true;
+            lblParamThree.Visible = true;
 
             chord = Convert.ToDouble(txtParam1.Text);
             angle = Convert.ToDouble(txtParam2.Text);
 
-            double b = angle * (Math.PI/MAXGRADUS);
-            double c = (b * (Math.PI)) / 180; // converting value to radians
-            double d = Math.Sin(c);
-            arcLength = chord *(d/c);
-            lblSquare.Text = "Kuchenstücks Bogenlänge = " + arcLength.ToString();
-
-            double diametr= arcLength/b;
-            radius = diametr / 2;
+            double alpha = (180 - angle) / 2;
+            double cc = (alpha * (Math.PI)) / 180; // converting value to radians
+            radius = chord / (2 * Math.Cos(cc));
             lblParamTwo.Text = "Kuchenstücks Schenkellänge = " + radius.ToString();
+            arcLength = (radius * angle * Math.PI) / 180;//changed Formula
+            lblParamThree.Text = "Kuchenstücks Bogenlänge = " + arcLength.ToString();
+            square = Math.PI * Math.Pow(radius, 2) * (angle / MAXGRADUS);
+            lblSquare.Text = "Flächeninhalt Kuchenstücks = " + square.ToString();
 
             DrawChoceOfPie((float)angle);
         }
@@ -218,18 +218,19 @@ namespace Pie
         {
             lblSquare.Visible = true;
             lblParamTwo.Visible = true;
+            lblParamThree.Visible = true;
             
             chord = Convert.ToDouble(txtParam1.Text);
             radius = Convert.ToDouble(txtParam2.Text);
             double b = chord / (2 * radius);
-            double c = (b * (Math.PI)) / 180; // converting value to radians
-            double d = Math.Asin(c);
+            double d = Math.Asin(b);
             arcLength = 2*radius*d;
             lblParamTwo.Text = "Kuchenstücks Bogenlänge = " + arcLength.ToString();
 
             angle = d*(MAXGRADUS/Math.PI);
-            lblSquare.Text = "Winkel Kuchenstücks = " + angle.ToString();
-
+            lblParamThree.Text = "Winkel Kuchenstücks = " + angle.ToString();
+            square = Math.PI * Math.Pow(radius, 2) * (angle / MAXGRADUS);
+            lblSquare.Text = "Flächeninhalt Kuchenstücks = " + square.ToString();
             DrawChoceOfPie((float)angle);
         }
 
